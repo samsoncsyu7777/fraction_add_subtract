@@ -3,6 +3,7 @@ import {
   Grid,
   Typography,
   Button,
+  Box,
 } from "@material-ui/core";
 import { AlertSnackbar } from "../components/AlertComponents";
 import { MyFrame } from "../components/HeadingComponents";
@@ -744,13 +745,13 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
           }
         }
       }
-        setErrorMessage("👍🏻" + wellDone[languageIndex]);
-        setFormulaFocusedIndex(formulaFocusedIndex + 1);
-        setCompleted(true);
-        setSeverity("success");
-        setTimeout(() => {
-          setOpenAlert(true);
-        }, timeDelay);      
+      setErrorMessage("👍🏻" + wellDone[languageIndex]);
+      setFormulaFocusedIndex(formulaFocusedIndex + 1);
+      setCompleted(true);
+      setSeverity("success");
+      setTimeout(() => {
+        setOpenAlert(true);
+      }, timeDelay);
       return true;
     } else {
       setErrorMessage("👍🏻" + wellDone[languageIndex]);
@@ -759,7 +760,7 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
       setSeverity("success");
       setTimeout(() => {
         setOpenAlert(true);
-      }, timeDelay);      
+      }, timeDelay);
       return true;
     }
   }
@@ -983,17 +984,16 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
         <Grid className={classes.formulaColumn}>
           {
             fractionLinesArray.map((formula, index) => {
-              return <Grid className={`${classes.verticalCenterRow} ${classes.commonPadding}`}>
+              return <Grid key={index} className={`${classes.verticalCenterRow} ${classes.commonPadding}`}>
                 <Typography
                   className={classes.formulaLine}
                   style={{ opacity: index == 0 ? 0 : 1 }}
                 >=</Typography>
-
-                <Button
+                <Box
                   className={`${classes.formulaLine} ${classes.formulaBox}`}
-                  variant="outlined"
+                  border={1}
+                  borderColor={(index == formulaFocusedIndex) ? myTheme.color.myMagenta : myTheme.color.blue}
                   style={{
-                    borderColor: (index == formulaFocusedIndex) ? myTheme.color.myMagenta : myTheme.color.blue,
                     borderWidth: (index == formulaFocusedIndex) ? 3 : 1
                   }}
                 >
@@ -1008,8 +1008,7 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
                     calculationStage={calculationStage}
                     lineIndex={index}
                   />
-
-                </Button>
+                </Box>
                 <Grid>
                   {
                     index == formulaFocusedIndex &&

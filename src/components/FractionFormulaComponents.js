@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Grid,
-  Container
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -26,11 +25,15 @@ const fractionFormulaStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  overflow: {
+    overflow: "auto",
+    maxWidth: "70vw",
+  },
   leftRow: {
     display: "flex",
-    direction: "row",
+    //direction: "row",
     alignItems: "center",
-    overflow: 'auto',
+    //overflow: 'auto',
   },
   fractionColumn: {
     alignItems: 'center',
@@ -111,11 +114,11 @@ export const FractionFormula = ({ handlePartClick, formula, learningToolIndex, p
   const classes = fractionFormulaStyles();
   
   return (
-    <Grid className={classes.leftRow}>
+    <Grid className={`${classes.leftRow} ${classes.overflow}`}>
 
       {
         formula.map((fraction, index) => {
-          return <>
+          return <Grid key={index} className={classes.leftRow}>
             {
               index != 0 && <Button
                 variant="outlined"
@@ -178,7 +181,7 @@ export const FractionFormula = ({ handlePartClick, formula, learningToolIndex, p
                 </Button>
               }
             </Grid>
-          </>
+          </Grid>
         })
       }
 
