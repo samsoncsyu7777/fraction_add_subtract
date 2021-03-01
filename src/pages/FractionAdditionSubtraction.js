@@ -142,7 +142,6 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
 
   const resetClick = (e) => {
     if (completed) {
-
       if (stageOrder.stage > -1) {
         if (
           stageOrder.order <
@@ -160,8 +159,6 @@ export const FractionAdditionSubtraction = ({ languageIndex, topic, learningTool
       } else {
         resetDefault();
       }
-
-      //resetDefault();
     } else if (okButtonStage > 0) {
       if (calculationStage == 3) {
         var checkValue = false
